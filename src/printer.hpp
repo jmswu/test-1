@@ -14,13 +14,13 @@ class PrinterBase
     public:
         PrinterBase(int number): number(number)
         {
-            if (isNumberValid() == false) 
+            if (isInputValid() == false) 
             {
                 throw std::invalid_argument("Invalid input argument");
             }
         };
         
-        bool isNumberValid(void)
+        bool isInputValid(void)
         {
             if (number < INPUT_RANGE_MIN) return false;
             if (number > INPUT_RANGE_MAX) return false;
