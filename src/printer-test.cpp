@@ -3,12 +3,6 @@
 
 namespace
 {
-    TEST(AddTest, positiveNumber)
-    {
-        ASSERT_EQ(10, add(1, 9));
-        ASSERT_EQ(-1, add(9, -10));
-    }
-
     TEST(PrinterFoo, printIvalidInput_zero)
     {
         EXPECT_THROW(PrinterFoo printFoo(0), std::invalid_argument);
