@@ -12,6 +12,7 @@ class PrinterBase
         static constexpr int INPUT_RANGE_MAX = 100;
         int number = 0;
     public:
+        PrinterBase(void) = delete;
         PrinterBase(int number): number(number)
         {
             if (isInputValid() == false) 
