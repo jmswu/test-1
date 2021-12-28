@@ -5,14 +5,14 @@
 
 int add(int a, int b);
 
-class Printer
+class PrinterBase
 {
     protected:
         static constexpr int INPUT_RANGE_MIN = 1;
         static constexpr int INPUT_RANGE_MAX = 100;
         int number = 0;
     public:
-        Printer(int number): number(number)
+        PrinterBase(int number): number(number)
         {
             if (isNumberValid() == false) 
             {
