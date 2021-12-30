@@ -47,6 +47,5 @@ class PrinterFoo : public PrinterBase
         void print(void)
         {
             if (isConditionMet()) std::printf("Foo");
-            else std::printf("%d", number);
         }
 };
