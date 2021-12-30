@@ -24,7 +24,7 @@ namespace
         EXPECT_THROW(PrinterFoo printFoo(INT_MAX), std::invalid_argument);
     }
 
-    TEST(PrinterFoo, printFoo)
+    TEST(PrinterFoo, validInputValues)
     {
         const int RANGE_START = 1;
         const int RANGE_STOP = 33;
