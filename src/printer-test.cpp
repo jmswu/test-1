@@ -31,7 +31,7 @@ namespace
 
         for(auto i = RANGE_START; i <= RANGE_STOP; i++)
         {
-            int diviableByThree = i * 3;
+            int diviableByThree = i * PrinterFoo::DEVIDER;
             PrinterFoo printFoo(diviableByThree);
             ASSERT_TRUE(printFoo.isConditionMet());
         }
