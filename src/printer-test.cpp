@@ -26,8 +26,8 @@ namespace
 
     TEST(printerFoo, validInputValues)
     {
-        const int RANGE_START = 1;
-        const int RANGE_STOP = 33;
+        constexpr int RANGE_START = 1;
+        constexpr int RANGE_STOP = PrinterFoo::INPUT_RANGE_MAX / PrinterFoo::DEVIDER;
 
         for(auto i = RANGE_START; i <= RANGE_STOP; i++)
         {

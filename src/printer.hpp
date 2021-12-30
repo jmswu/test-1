@@ -8,11 +8,12 @@ int add(int a, int b);
 class PrinterBase
 {
     protected:
+        int number = INPUT_RANGE_MIN;
+        
+    public:
         static constexpr int INPUT_RANGE_MIN = 1;
         static constexpr int INPUT_RANGE_MAX = 100;
 
-        int number = INPUT_RANGE_MIN;
-    public:
         PrinterBase(void) = delete;
         PrinterBase(int number): number(number)
         {
@@ -37,11 +38,13 @@ class PrinterBase
 class PrinterFoo : public PrinterBase
 {
     public:
+        static constexpr int DEVIDER = 3;
+
         PrinterFoo(int number) : PrinterBase(number){}
 
         bool isConditionMet(void)
         {
-            return (number % 3 == 0) ? true : false;
+            return (number % DEVIDER == 0) ? true : false;
         }
 
         void print(void)
