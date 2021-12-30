@@ -9,7 +9,7 @@ class PrinterBase
 {
     protected:
         int number = INPUT_RANGE_MIN;
-        
+
     public:
         static constexpr int INPUT_RANGE_MIN = 1;
         static constexpr int INPUT_RANGE_MAX = 100;
@@ -40,6 +40,7 @@ class PrinterFoo : public PrinterBase
     public:
         static constexpr int DEVIDER = 3;
 
+        PrinterFoo(void) = delete;
         PrinterFoo(int number) : PrinterBase(number){}
 
         bool isConditionMet(void)
