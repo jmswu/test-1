@@ -23,4 +23,17 @@ namespace
         EXPECT_THROW(PrinterFoo printFoo(102), std::invalid_argument);
         EXPECT_THROW(PrinterFoo printFoo(INT_MAX), std::invalid_argument);
     }
+
+    TEST(PrinterFoo, printFoo)
+    {
+        const int RANGE_START = 1;
+        const int RANGE_STOP = 33;
+
+        for(auto i = RANGE_START; i <= RANGE_STOP; i++)
+        {
+            int diviableByThree = i * 3;
+            PrinterFoo printFoo(diviableByThree);
+            ASSERT_TRUE(printFoo.isConditionMet());
+        }
+    }
 }
