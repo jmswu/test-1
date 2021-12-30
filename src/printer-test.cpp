@@ -36,4 +36,16 @@ namespace
             ASSERT_TRUE(printFoo.isConditionMet());
         }
     }
+
+    TEST(printerFoo, validInputsValues_butConditionNotmet)
+    {
+        for(auto inputValue = PrinterFoo::INPUT_RANGE_MIN; inputValue <= PrinterFoo::INPUT_RANGE_MAX; inputValue++)
+        {
+            // skip if the value can be devided by divider
+            if ((inputValue % PrinterFoo::DEVIDER) == 0) continue;
+            
+            PrinterFoo printerFoo(inputValue);
+            ASSERT_FALSE(printerFoo.isConditionMet());
+        }
+    }
 }
