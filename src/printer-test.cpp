@@ -24,7 +24,7 @@ namespace
         EXPECT_THROW(PrinterFoo printFoo(INT_MAX), std::invalid_argument);
     }
 
-    TEST(printerFoo, validInputValues)
+    TEST(printerFoo, validInputValues_andCondtionMet)
     {
         constexpr int RANGE_START = 1;
         constexpr int RANGE_STOP = PrinterFoo::INPUT_RANGE_MAX / PrinterFoo::DEVIDER;
@@ -43,7 +43,7 @@ namespace
         {
             // skip if the value can be devided by divider
             if ((inputValue % PrinterFoo::DEVIDER) == 0) continue;
-            
+
             PrinterFoo printerFoo(inputValue);
             ASSERT_FALSE(printerFoo.isConditionMet());
         }
