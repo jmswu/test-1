@@ -49,7 +49,7 @@ namespace
         }
     }
 
-    TEST(pinterBar, validInputValues_andCondtionMet)
+    TEST(printerBar, validInputValues_andCondtionMet)
     {
         constexpr int RANGE_START = 1;
         constexpr int RANGE_STOP = PrinterBar::INPUT_RANGE_MAX / PrinterBar::DEVIDER;
@@ -59,6 +59,18 @@ namespace
             int diviableByFive = i * PrinterBar::DEVIDER;
             PrinterBar printBar(diviableByFive);
             ASSERT_TRUE(printBar.isConditionMet());
+        }
+    }
+
+    TEST(printerBar, validInputValues_andCondtionNotMet)
+    {
+        for(auto inputValue = PrinterBar::INPUT_RANGE_MIN; inputValue <= PrinterBar::INPUT_RANGE_MAX; inputValue++)
+        {
+            // skip if the value can be devided by divider
+            if ((inputValue % PrinterBar::DEVIDER) == 0) continue;
+
+            PrinterBar printerBar(inputValue);
+            ASSERT_FALSE(printerBar.isConditionMet());
         }
     }
 }
