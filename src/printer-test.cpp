@@ -48,4 +48,17 @@ namespace
             ASSERT_FALSE(printerFoo.isConditionMet());
         }
     }
+
+    TEST(pinterBar, validInputValues_andCondtionMet)
+    {
+        constexpr int RANGE_START = 1;
+        constexpr int RANGE_STOP = PrinterBar::INPUT_RANGE_MAX / PrinterBar::DEVIDER;
+
+        for(auto i = RANGE_START; i <= RANGE_STOP; i++)
+        {
+            int diviableByFive = i * PrinterBar::DEVIDER;
+            PrinterBar printBar(diviableByFive);
+            ASSERT_TRUE(printBar.isConditionMet());
+        }
+    }
 }
