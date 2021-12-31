@@ -53,3 +53,22 @@ class PrinterFoo : public PrinterBase
             if (isConditionMet()) std::printf("Foo");
         }
 };
+
+class PrinterBar : public PrinterBase
+{
+    public:
+        static constexpr int DEVIDER = 5;
+
+        PrinterBar(void) = delete;
+        PrinterBar(int number) : PrinterBase(number){}
+
+        bool isConditionMet(void)
+        {
+            return (number % DEVIDER == 0) ? true : false;
+        }
+
+        void print(void)
+        {
+            if (isConditionMet()) std::printf("Bar");
+        }
+};
