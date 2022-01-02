@@ -73,4 +73,19 @@ namespace
             ASSERT_FALSE(printerBar.isConditionMet());
         }
     }
+
+    TEST(printerFooBar, validInputValues_andCondtionMet)
+    {
+        for(auto inputvalue = 1; inputvalue <= 100; inputvalue++)
+        {
+
+            // skip if the value can be devided by divider
+            if (((inputvalue % PrinterFooBar::PrinterFoo::DEVIDER) == 0) &&
+                ((inputvalue % PrinterFooBar::PrinterBar::DEVIDER) == 0))
+                continue;
+
+            PrinterFooBar printerFooBar(inputvalue);
+            ASSERT_FALSE(printerFooBar.isConditionMet());
+        }
+    }
 }

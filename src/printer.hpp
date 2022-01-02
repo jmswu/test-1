@@ -72,3 +72,24 @@ class PrinterBar : public PrinterBase
             if (isConditionMet()) std::printf("Bar");
         }
 };
+
+class PrinterFooBar: public PrinterFoo, public PrinterBar
+{   
+    public:
+        PrinterFooBar(void) = delete;
+        PrinterFooBar(int number): PrinterFoo(number), PrinterBar(number) {}
+
+        bool isConditionMet(void)
+        {
+            return PrinterFoo::isConditionMet() && PrinterBar::isConditionMet();
+        }
+
+        void print(void)
+        {
+            if (isConditionMet()) 
+            {
+                PrinterFoo::print();
+                PrinterBar::print();
+            }
+        }
+};
