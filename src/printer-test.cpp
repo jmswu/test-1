@@ -76,9 +76,8 @@ namespace
 
     TEST(printerFooBar, validInputValues_andCondtionNotMet)
     {
-        for(auto inputvalue = 1; inputvalue <= 100; inputvalue++)
+        for(auto inputvalue = PrinterFooBar::INPUT_RANGE_MIN; inputvalue <= PrinterFooBar::INPUT_RANGE_MAX; inputvalue++)
         {
-
             // skip if the value can be devided by divider
             if (((inputvalue % PrinterFooBar::PrinterFoo::DEVIDER) == 0) &&
                 ((inputvalue % PrinterFooBar::PrinterBar::DEVIDER) == 0))
