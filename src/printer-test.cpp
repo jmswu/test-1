@@ -74,7 +74,7 @@ namespace
         }
     }
 
-    TEST(printerFooBar, validInputValues_andCondtionMet)
+    TEST(printerFooBar, validInputValues_andCondtionNotMet)
     {
         for(auto inputvalue = 1; inputvalue <= 100; inputvalue++)
         {
