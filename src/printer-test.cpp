@@ -169,10 +169,21 @@ namespace
     {
         for(auto inputValue = PrinterBase::INPUT_RANGE_MIN; inputValue <= PrinterBase::INPUT_RANGE_MAX; inputValue++)
         {
-            PrinterFoo      foo(inputValue);        myPrint(inputValue, foo);
-            PrinterBar      bar(inputValue);        myPrint(inputValue, bar);
-            PrinterFooBar   foobar(inputValue);     myPrint(inputValue, foobar);
-            PrinterNumber   number(inputValue);     myPrint(inputValue, number);
+            PrinterFoo      foo(inputValue);        // myPrint(inputValue, foo);
+            PrinterBar      bar(inputValue);        // myPrint(inputValue, bar);
+            PrinterFooBar   foobar(inputValue);     // myPrint(inputValue, foobar);
+            PrinterNumber   number(inputValue);     // myPrint(inputValue, number);
+
+            if (foobar.isConditionMet())
+            {
+                myPrint(inputValue, foobar);
+            }
+            else
+            {
+                myPrint(inputValue, foo);
+                myPrint(inputValue, bar);
+                myPrint(inputValue, number);
+            }
         }
     }
 
