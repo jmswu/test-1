@@ -4,6 +4,11 @@
 
 namespace
 {
+    TEST(dummy, test)
+    {
+        ASSERT_EQ(add(1, 2), 3);
+    }
+
     TEST(printerFoo, printIvalidInput_zero)
     {
         EXPECT_THROW(PrinterFoo printFoo(0), std::invalid_argument);

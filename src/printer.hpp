@@ -6,13 +6,7 @@
 #include <string>
 
 int add(int a, int b);
-template<class T> void myPrint(const int val, const T &t)
-{
-    if (t.isConditionMet())
-    {
-        std::printf("val: %03d, str: %s\n", val, t.getString().c_str());
-    }
-}
+
 
 class PrinterBase
 {
@@ -117,3 +111,13 @@ class PrinterNumber: public PrinterFoo, public PrinterBar
             return isConditionMet() ? std::to_string(PrinterFoo::number) : std::string("");
         }
 };
+
+
+template<class T> 
+void myPrint(const int val, const T &t)
+{
+    if (t.isConditionMet())
+    {
+        std::printf("val: %03d, str: %s\n", val, t.getString().c_str());
+    }
+}
