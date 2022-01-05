@@ -54,6 +54,12 @@ namespace
         }
     }
 
+    TEST(printerFoo, correctOutputString)
+    {
+        PrinterFoo printerFoo(3);
+        ASSERT_EQ(printerFoo.getString(), std::string("Foo"));
+    }
+
     TEST(printerBar, validInputValues_andCondtionMet)
     {
         constexpr int RANGE_START = 1;
@@ -77,6 +83,12 @@ namespace
             PrinterBar printerBar(inputValue);
             ASSERT_FALSE(printerBar.isConditionMet());
         }
+    }
+
+    TEST(printerBar, correctOutputString)
+    {
+        PrinterBar printerBar(5);
+        ASSERT_EQ(printerBar.getString(), std::string("Bar"));
     }
 
     TEST(printerFooBar, validInputValues_andCondtionMet)
@@ -107,6 +119,12 @@ namespace
         }
     }
 
+    TEST(printerFooBar, correctOutputString)
+    {
+        PrinterFooBar printerFooBar(15);
+        ASSERT_EQ(printerFooBar.getString(), std::string("FooBar"));
+    }
+
     TEST(printerNumber, validInputValues_andConditionMet)
     {
         for(auto inputvalue = PrinterNumber::INPUT_RANGE_MIN; inputvalue <= PrinterNumber::INPUT_RANGE_MAX; inputvalue++)
@@ -135,6 +153,16 @@ namespace
                 ASSERT_FALSE(printerNumber.isConditionMet());
             }
         } 
+    }
+
+    TEST(printerNumber, correctOutputString)
+    {
+        const int dataArrayCannotDivideByThreeOrFive[] = {1, 2, 4, 7};
+        for(const auto &val: dataArrayCannotDivideByThreeOrFive)
+        {
+            PrinterNumber printerNumber(val);
+            ASSERT_EQ(printerNumber.getString(), std::to_string(val));
+        }
     }
 
     TEST(printerAll, showAllValues)
