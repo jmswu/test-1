@@ -23,7 +23,7 @@ class PrinterBase
             }
         };
         
-        bool isInputValid(void)
+        bool isInputValid(void) const
         {
             if (number < INPUT_RANGE_MIN) return false;
             if (number > INPUT_RANGE_MAX) return false;
@@ -31,8 +31,8 @@ class PrinterBase
             return true;
         }
 
-        virtual bool isConditionMet(void) = 0;
-        virtual void print(void) = 0;
+        virtual bool isConditionMet(void) const = 0;
+        virtual void print(void) const = 0;
 };
 
 class PrinterFoo : public PrinterBase
@@ -43,12 +43,12 @@ class PrinterFoo : public PrinterBase
         PrinterFoo(void) = delete;
         PrinterFoo(int number) : PrinterBase(number){}
 
-        bool isConditionMet(void)
+        bool isConditionMet(void) const override
         {
             return (number % DEVIDER == 0) ? true : false;
         }
 
-        void print(void)
+        void print(void) const override
         {
             if (isConditionMet()) std::printf("Foo");
         }
@@ -62,12 +62,12 @@ class PrinterBar : public PrinterBase
         PrinterBar(void) = delete;
         PrinterBar(int number) : PrinterBase(number){}
 
-        bool isConditionMet(void)
+        bool isConditionMet(void) const override
         {
             return (number % DEVIDER == 0) ? true : false;
         }
 
-        void print(void)
+        void print(void) const override
         {
             if (isConditionMet()) std::printf("Bar");
         }
@@ -79,12 +79,12 @@ class PrinterFooBar: public PrinterFoo, public PrinterBar
         PrinterFooBar(void) = delete;
         PrinterFooBar(int number): PrinterFoo(number), PrinterBar(number) {}
 
-        bool isConditionMet(void)
+        bool isConditionMet(void) const override
         {
             return PrinterFoo::isConditionMet() && PrinterBar::isConditionMet();
         }
 
-        void print(void)
+        void print(void) const override
         {
             if (isConditionMet()) 
             {
@@ -100,12 +100,12 @@ class PrinterNumber: public PrinterFoo, public PrinterBar
         PrinterNumber(void) = delete;
         PrinterNumber(int number): PrinterFoo(number), PrinterBar(number) {}
 
-        bool isConditionMet(void) override
+        bool isConditionMet(void) const override
         {
             return (PrinterFoo::isConditionMet() == false) && (PrinterBar::isConditionMet() == false);
         }
 
-        void print(void)
+        void print(void) const override
         {
             if (isConditionMet())
             {
