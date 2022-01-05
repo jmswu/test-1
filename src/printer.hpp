@@ -36,11 +36,11 @@ class PrinterBase
 
         std::string getString(void) const
         {
+            if (str.empty()) throw std::invalid_argument("string not set");
             return isConditionMet() ? str : std::string("");
         }
 
         virtual bool isConditionMet(void) const = 0;
-        virtual void print(void) const = 0;
 };
 
 class PrinterFoo : public PrinterBase
@@ -57,11 +57,6 @@ class PrinterFoo : public PrinterBase
         bool isConditionMet(void) const override
         {
             return (number % DEVIDER == 0) ? true : false;
-        }
-
-        void print(void) const override
-        {
-            if (isConditionMet()) std::cout << str;
         }
 };
 
@@ -80,11 +75,6 @@ class PrinterBar : public PrinterBase
         {
             return (number % DEVIDER == 0) ? true : false;
         }
-
-        void print(void) const override
-        {
-            if (isConditionMet()) std::printf("%s", str.c_str());
-        }
 };
 
 class PrinterFooBar: public PrinterFoo, public PrinterBar
@@ -96,15 +86,6 @@ class PrinterFooBar: public PrinterFoo, public PrinterBar
         bool isConditionMet(void) const override
         {
             return PrinterFoo::isConditionMet() && PrinterBar::isConditionMet();
-        }
-
-        void print(void) const override
-        {
-            if (isConditionMet()) 
-            {
-                PrinterFoo::print();
-                PrinterBar::print();
-            }
         }
 
         std::string getString(void) const
@@ -122,14 +103,6 @@ class PrinterNumber: public PrinterFoo, public PrinterBar
         bool isConditionMet(void) const override
         {
             return (PrinterFoo::isConditionMet() == false) && (PrinterBar::isConditionMet() == false);
-        }
-
-        void print(void) const override
-        {
-            if (isConditionMet())
-            {
-                std::printf("%d", PrinterFoo::number);
-            }
         }
 
         std::string getString(void) const
