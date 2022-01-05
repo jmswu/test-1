@@ -74,6 +74,20 @@ namespace
         }
     }
 
+    TEST(printerFooBar, validInputValues_andCondtionMet)
+    {
+        for(auto inputvalue = PrinterFooBar::INPUT_RANGE_MIN; inputvalue <= PrinterFooBar::INPUT_RANGE_MAX; inputvalue++)
+        {
+            // skip if the value can be devided by divider
+            if (((inputvalue % PrinterFooBar::PrinterFoo::DEVIDER) != 0) ||
+                ((inputvalue % PrinterFooBar::PrinterBar::DEVIDER) != 0))
+                continue;
+
+            PrinterFooBar printerFooBar(inputvalue);
+            ASSERT_TRUE(printerFooBar.isConditionMet());
+        }
+    }
+
     TEST(printerFooBar, validInputValues_andCondtionNotMet)
     {
         for(auto inputvalue = PrinterFooBar::INPUT_RANGE_MIN; inputvalue <= PrinterFooBar::INPUT_RANGE_MAX; inputvalue++)
@@ -87,4 +101,5 @@ namespace
             ASSERT_FALSE(printerFooBar.isConditionMet());
         }
     }
+
 }
