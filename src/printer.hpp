@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <cstdbool>
 #include <stdexcept>
 #include <string>
@@ -60,7 +61,7 @@ class PrinterFoo : public PrinterBase
 
         void print(void) const override
         {
-            if (isConditionMet()) std::printf("%s", str.c_str());
+            if (isConditionMet()) std::cout << str;
         }
 };
 
