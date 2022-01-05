@@ -132,4 +132,17 @@ namespace
         } 
     }
 
+    TEST(printerAll, showAllValues)
+    {
+        for(auto inputValue = PrinterBase::INPUT_RANGE_MIN; inputValue <= PrinterBase::INPUT_RANGE_MAX; inputValue++)
+        {
+            std::printf("input: %03d, str: ", inputValue);
+            PrinterFoo      foo(inputValue);        foo.print();
+            PrinterBar      bar(inputValue);        bar.print();
+            PrinterFooBar   foobar(inputValue);     foobar.print();
+            PrinterNumber   number(inputValue);     number.print();
+            std::printf("\n");
+        }
+    }
+
 }
