@@ -136,16 +136,10 @@ namespace
     {
         for(auto inputValue = PrinterBase::INPUT_RANGE_MIN; inputValue <= PrinterBase::INPUT_RANGE_MAX; inputValue++)
         {
-            //std::printf("input: %03d, str: ", inputValue);
-            std::string str;
-            PrinterFoo      foo(inputValue);        if (foo.isConditionMet())   str = foo.getString();
-            PrinterBar      bar(inputValue);        if (bar.isConditionMet())   str = bar.getString();
-            PrinterFooBar   foobar(inputValue);     if (foobar.isConditionMet()) str = foobar.getString();
-            PrinterNumber   number(inputValue);     if (number.isConditionMet()) str = number.getString();
-            //std::printf("\n");
-
-            //std::printf("input: %03d, str: ", inputValue);
-            std::printf("input: %03d, str: %s\n", inputValue, str.c_str());
+            PrinterFoo      foo(inputValue);        myPrint(inputValue, foo);
+            PrinterBar      bar(inputValue);        myPrint(inputValue, bar);
+            PrinterFooBar   foobar(inputValue);     myPrint(inputValue, foobar);
+            PrinterNumber   number(inputValue);     myPrint(inputValue, number);
         }
     }
 
