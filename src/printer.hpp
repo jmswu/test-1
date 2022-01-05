@@ -93,3 +93,23 @@ class PrinterFooBar: public PrinterFoo, public PrinterBar
             }
         }
 };
+
+class PrinterNumber: public PrinterFoo, public PrinterBar
+{
+    public:
+        PrinterNumber(void) = delete;
+        PrinterNumber(int number): PrinterFoo(number), PrinterBar(number) {}
+
+        bool isConditionMet(void) override
+        {
+            return (PrinterFoo::isConditionMet() == false) && (PrinterBar::isConditionMet() == false);
+        }
+
+        void print(void)
+        {
+            if (isConditionMet())
+            {
+                std::printf("%d", PrinterFoo::number);
+            }
+        }
+};
