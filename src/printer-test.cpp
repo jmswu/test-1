@@ -104,11 +104,12 @@ namespace
 
     TEST(printerNumber, validInputValues_andConditionMet)
     {
-        for(auto inputvalue = PrinterFooBar::INPUT_RANGE_MIN; inputvalue <= PrinterFooBar::INPUT_RANGE_MAX; inputvalue++)
+        for(auto inputvalue = PrinterNumber::INPUT_RANGE_MIN; inputvalue <= PrinterNumber::INPUT_RANGE_MAX; inputvalue++)
         {
-            // skip if the value can be devided by divider
-            if (((inputvalue % PrinterFooBar::PrinterFoo::DEVIDER) != 0) &&
-                ((inputvalue % PrinterFooBar::PrinterBar::DEVIDER) != 0))
+            // skip if the value cannot be devided by divider
+            // condition true
+            if (((inputvalue % PrinterNumber::PrinterFoo::DEVIDER) != 0) &&
+                ((inputvalue % PrinterNumber::PrinterBar::DEVIDER) != 0))
             {
                 PrinterNumber printerNumber(inputvalue);
                 ASSERT_TRUE(printerNumber.isConditionMet());
@@ -121,6 +122,7 @@ namespace
         for(auto inputvalue = PrinterNumber::INPUT_RANGE_MIN; inputvalue <= PrinterNumber::INPUT_RANGE_MAX; inputvalue++)
         {
             // skip if the value can be devided by divider
+            // condition false
             if (((inputvalue % PrinterNumber::PrinterFoo::DEVIDER) == 0) &&
                 ((inputvalue % PrinterNumber::PrinterBar::DEVIDER) == 0))
             {
